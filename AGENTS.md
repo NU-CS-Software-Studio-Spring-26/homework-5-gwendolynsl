@@ -1,7 +1,5 @@
 # AGENTS.md
 
-Guidance for AI assistants working in this repo. Facts below are verified from `Gemfile`, `config/`, `bin/`, and existing app code.
-
 ## Stack
 
 Rails 8.1 sample todo app (`TodoApp`), Ruby 3.4.1, SQLite (`storage/*.sqlite3` per `config/database.yml`).

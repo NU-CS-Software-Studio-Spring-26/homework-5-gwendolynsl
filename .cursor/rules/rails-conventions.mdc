@@ -2,3 +2,19 @@
 description: Rails 8 conventions for the sample todo app
 alwaysApply: true
 ---
+- One resource only: Todo model, TodosController, resources :todos in routes.rb
+- Views live under app/views/todos/
+- Use before_action :set_todo for show, edit, update, destroy
+- Mutating actions (create, update, destroy) use respond_to with format.html and format.json
+- HTML success redirects with flash notice; validation failures use status: :unprocessable_content
+- Use params.expect for strong parameters, not require/permit
+- Shared partials use leading underscores, stored in app/views/todos/
+- Use form_with(model: todo) in forms — Turbo is enabled by default
+- Use dom_id(todo) for stable DOM ids
+- Frontend uses Turbo + Stimulus via importmap, no inline script tags in ERB
+- No Bootstrap gem — Propshaft for assets
+- SQLite only, schema scoped to a single todos table
+- All schema changes go through reversible migrations, never hand-edit db/schema.rb
+- Tests use Minitest under test/ — not RSpec
+- No new gems without approval
+- CSRF protection stays on, never use skip_before_action :verify_authenticity_token

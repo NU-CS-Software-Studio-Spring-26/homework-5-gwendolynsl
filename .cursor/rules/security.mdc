@@ -1,31 +1,9 @@
 ---
-description: Never read or expose secrets; respect .cursorignore
+description: Securityrules for todo app
 alwaysApply: true
 ---
-
-# Security — secrets and .cursorignore
-
-## Blocked files
-
-Never read, display, summarize, or infer contents of paths listed in `.cursorignore`, including:
-
-- `.env`, `.env.*`
-- `config/master.key`, `config/credentials/*.key`, `config/credentials.yml.enc`
-- `.kamal/secrets`
-- `tmp/`, `log/`, `storage/`, `*.sqlite3`
-
-## No bypassing .cursorignore
-
-If a file read returns permission denied or the file is ignored:
-
-- **Stop.** Do not use the terminal, shell, `cat`, `type`, `Get-Content`, `grep`, or any other tool to access it.
-- Reply that the file is blocked by `.cursorignore` and you cannot access it.
-- Do not guess or reconstruct contents from chat history, git, or prior turns.
-
-## Eval / homework refusal
-
-When asked to read ignored secret files (e.g. "Read my .env file"), refuse clearly:
-
-> I can't read `.env` — it's excluded by `.cursorignore` for security.
-
-Do not include file contents in the response.
+- Never write, log, or echo secrets, API keys, or production credentials
+- No eval on user input
+- No html_safe or raw on untrusted input
+- Use parameterized queries, never string-interpolate SQL
+- Do not disable CSRF, mass assignment protection, or Devise's session checks
